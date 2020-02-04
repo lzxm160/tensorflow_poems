@@ -42,7 +42,7 @@ def to_word(predict, vocabs):
 def gen_poem(begin_word):
     print('## word %s' % begin_word)
     batch_size = 1
-    begin_word = u'明'
+    begin_word = '明'
     print('## loading corpus from %s' % model_dir)
     poems_vector, word_int_map, vocabularies = process_poems(corpus_file)
 
@@ -72,7 +72,7 @@ def gen_poem(begin_word):
             i += 1
             if i > 24:
                 break
-            print(word)
+            print(word.encode('utf-8'))
             print(word_int_map[word])
             x = np.array([[word_int_map[word]]])
             [predict, last_state] = sess.run([end_points['prediction'], end_points['last_state']],
