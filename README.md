@@ -1,3 +1,4 @@
+docker pull tensorflow/tensorflow:0.10.0-devel
 # LiBai AI Composer
 
 > An ai powered automatically generats poems in Chinese.
