@@ -30,7 +30,7 @@ lr = 0.0002
 
 
 def to_word(predict, vocabs):
-    predict = predict[0]       
+    predict = predict[0]
     predict /= np.sum(predict)
     sample = np.random.choice(np.arange(len(predict)), p=predict)
     if sample > len(vocabs):
@@ -42,6 +42,7 @@ def to_word(predict, vocabs):
 def gen_poem(begin_word):
     print('## word %s' % begin_word)
     batch_size = 1
+    begin_word = '明'
     print('## loading corpus from %s' % model_dir)
     poems_vector, word_int_map, vocabularies = process_poems(corpus_file)
 
@@ -86,6 +87,7 @@ def pretty_print_poem(poem_):
     for s in poem_sentences:
         if s != '' and len(s) > 10:
             print(s + '。')
+
 
 if __name__ == '__main__':
     begin_char = input('## please input the first character:')
