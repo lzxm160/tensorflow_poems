@@ -42,7 +42,7 @@ def to_word(predict, vocabs):
 def gen_poem(begin_word):
     print('## word %s' % begin_word)
     batch_size = 1
-    begin_word = '明'
+    begin_word = u'明'
     print('## loading corpus from %s' % model_dir)
     poems_vector, word_int_map, vocabularies = process_poems(corpus_file)
 
