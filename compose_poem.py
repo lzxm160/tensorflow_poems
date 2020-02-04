@@ -40,9 +40,7 @@ def to_word(predict, vocabs):
 
 
 def gen_poem(begin_word):
-    print('## word %s' % begin_word)
     batch_size = 1
-    begin_word = '明'
     print('## loading corpus from %s' % model_dir)
     poems_vector, word_int_map, vocabularies = process_poems(corpus_file)
 
@@ -90,6 +88,8 @@ def pretty_print_poem(poem_):
 
 
 if __name__ == '__main__':
-    begin_char = input('## please input the first character:')
-    poem = gen_poem(begin_char)
+    # begin_char = input('## please input the first character:')
+    begin_word = '明'
+    print('## word %s' % begin_word)
+    poem = gen_poem(begin_word)
     pretty_print_poem(poem_=poem)
