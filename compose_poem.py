@@ -90,6 +90,6 @@ def pretty_print_poem(poem_):
 if __name__ == '__main__':
     # begin_char = input('## please input the first character:')
     begin_word = u'明'
-    print('## word %s' % begin_word)
+    print('## word %s' % begin_word.encode('utf-8'))
     poem = gen_poem(begin_word)
     pretty_print_poem(poem_=poem)
