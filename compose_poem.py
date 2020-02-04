@@ -20,9 +20,9 @@ import tensorflow as tf
 from poems.model import rnn_model
 from poems.poems import process_poems
 import numpy as np
-import sys
-import codecs
-sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
+# import sys
+# import codecs
+# sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 start_token = 'B'
 end_token = 'E'
 model_dir = './model/'
