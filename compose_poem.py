@@ -71,6 +71,8 @@ def gen_poem(begin_word):
             i += 1
             if i > 24:
                 break
+            print(word)
+            print(word_int_map[word])
             x = np.array([[word_int_map[word]]])
             [predict, last_state] = sess.run([end_points['prediction'], end_points['last_state']],
                                              feed_dict={input_data: x, end_points['initial_state']: last_state})
