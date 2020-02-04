@@ -91,7 +91,7 @@ def pretty_print_poem(poem_):
 
 if __name__ == '__main__':
     # begin_char = input('## please input the first character:')
-    begin_word = '明'
+    begin_word = '雨'
     print(begin_word)
     poem = gen_poem(begin_word)
     pretty_print_poem(poem_=poem)
