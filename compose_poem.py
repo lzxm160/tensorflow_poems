@@ -55,7 +55,9 @@ def gen_poem(begin_word):
 
     saver = tf.train.Saver(tf.global_variables())
     init_op = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
-    with tf.Session() as sess:
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True
+    with tf.Session(config=config) as sess:
         sess.run(init_op)
 
         checkpoint = tf.train.latest_checkpoint(model_dir)
@@ -72,10 +74,10 @@ def gen_poem(begin_word):
         while word != end_token:
             poem_ += word
             i += 1
-            if i > 24:
+            if i > 32:
                 break
-            print(word)
-            print(word_int_map[word])
+            print('word:',word)
+            # print(word_int_map[word])
             x = np.array([[word_int_map[word]]])
             [predict, last_state] = sess.run([end_points['prediction'], end_points['last_state']],
                                              feed_dict={input_data: x, end_points['initial_state']: last_state})
@@ -93,7 +95,8 @@ def pretty_print_poem(poem_):
 
 if __name__ == '__main__':
     # begin_char = input('## please input the first character:')
-    begin_word = '雨'
+    begin_word = '禅'
     print(begin_word)
     poem = gen_poem(begin_word)
-    pretty_print_poem(poem_=poem)
+    print('poem:',poem)
+    # pretty_print_poem(poem_=poem)

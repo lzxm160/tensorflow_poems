@@ -24,7 +24,7 @@ from poems.poems import process_poems, generate_batch
 tf.app.flags.DEFINE_integer('batch_size', 64, 'batch size.')
 tf.app.flags.DEFINE_float('learning_rate', 0.01, 'learning rate.')
 tf.app.flags.DEFINE_string('model_dir', os.path.abspath('./model'), 'model save path.')
-tf.app.flags.DEFINE_string('file_path', os.path.abspath('./data/poems.txt'), 'file name of poems.')
+tf.app.flags.DEFINE_string('file_path', os.path.abspath('./data/qijue-all.txt'), 'file name of poems.')
 tf.app.flags.DEFINE_string('model_prefix', 'poems', 'model save prefix.')
 tf.app.flags.DEFINE_integer('epochs', 50, 'train how many epochs.')
 
@@ -46,7 +46,11 @@ def run_training():
 
     saver = tf.train.Saver(tf.global_variables())
     init_op = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
-    with tf.Session() as sess:
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True
+    # session = tf.Session(config=config)
+    # set_session(session)
+    with tf.Session(config=config) as sess:
         # sess = tf_debug.LocalCLIDebugWrapperSession(sess=sess)
         # sess.add_tensor_filter("has_inf_or_nan", tf_debug.has_inf_or_nan)
         sess.run(init_op)
